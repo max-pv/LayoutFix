@@ -1,0 +1,12 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="Core.lua"/>
+    <Script file="Mappings\RussianEnglish.lua"/>
+    <Script file="Mappings\UkrainianEnglish.lua"/>
+    <Script file="Mappings\GreekEnglish.lua"/>
+    <Script file="Mappings\HebrewEnglish.lua"/>
+    <Script file="Mappings\ArabicEnglish.lua"/>
+    <Script file="Mappings\ThaiEnglish.lua"/>
+    <Script file="Chat.lua"/>
+    <Script file="Locale.lua"/>
+    <Script file="Settings.lua"/>
+</Ui>

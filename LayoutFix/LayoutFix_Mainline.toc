@@ -1,0 +1,7 @@
+## Interface: 120105
+## Title: LayoutFix
+## Notes: Corrects keyboard-layout mistakes in the chat input.
+## Version: 0.1.0
+## SavedVariables: LayoutFixDB
+
+Load.xml
