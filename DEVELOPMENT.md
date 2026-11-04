@@ -30,7 +30,7 @@ On modern clients the runtime post-hooks Blizzard's chat activation and listens 
 | Client | Interface | Implementation and automated coverage | In-game verification |
 | --- | --- | --- | --- |
 | Original WoW 3.3.5a (WotLK) | `30300` | Primary target. Legacy chat, settings, and dropdown paths exercised with mocks. | Pending |
-| Whitemane Frostmourne Rebuffed (3.3.5a-derived) | `30300` | Uses the legacy Tab shortcut. | After `/reload`, Shift+Tab converted `Ghbdtn` → `Привет` → `Ghbdtn` in a focused Say draft. The draft stayed unsent. |
+| Whitemane Frostmourne Rebuffed (3.3.5a-derived) | `30300` | Uses the legacy Tab shortcut. | Partial verification. After `/reload`, Shift+Tab converted `Ghbdtn` → `Привет` → `Ghbdtn` in a focused Say draft without sending it. See the checklist below for remaining checks. |
 | Official Classic Era 1.15.9 | `11509` | Flavor manifest and modern chat and settings paths exercised with mocks. Likely compatible based on the client UI source. | Pending |
 | Retail 12.1.5 | `120105` | Flavor manifest and modern chat and settings paths exercised with mocks. Likely compatible based on the client UI source. | Pending |
 | Other legacy and official Classic branches | Varies | No targeted manifests or compatibility verification. Clients lacking both supported chat activation APIs cannot use the shortcut. | Unverified |
@@ -77,11 +77,12 @@ The suite covers the mapping registry, UTF-8 conversion and cursor offsets, chat
 
 ## Manual release checklist
 
-All items require a running client. Start on an original 3.3.5a client with other addons disabled. Repeat on each additional client before marking that version as verified.
+Checked items record results on Whitemane Frostmourne Rebuffed (`30300`). Run the full checklist separately on an original 3.3.5a client with other addons disabled, and on each additional client before marking it as verified.
 
+- [x] After `/reload`, press Shift+Tab in a focused Say draft to convert `Ghbdtn` → `Привет` → `Ghbdtn`. Confirm the draft stays unsent.
 - [ ] Enable Lua errors, load LayoutFix, and verify the options panel opens and displays the client default shortcut and the English/Russian mapping.
-- [ ] Convert `ghbdtn`, `руддщ`, `Ghbdtn`, and `GHBDTN`. Check `ё`, `Ё`, punctuation, digits, spaces, and mixed-script drafts.
-- [ ] Verify Say, Guild, Party, Raid, a numbered channel, and whispers. Check the channel or recipient before and after conversion.
+- [ ] Expand conversion coverage to `ghbdtn`, `руддщ`, and `GHBDTN`. Check `ё`, `Ё`, punctuation, digits, spaces, and mixed-script drafts.
+- [ ] Verify Guild, Party, Raid, a numbered channel, and whispers. Check the channel or recipient before and after conversion.
 - [ ] Verify slash commands such as `/run ghbdtn` stay intact and linked items survive a shortcut press.
 - [ ] Convert with the caret in the middle of the draft. Continue typing, check that focus stays in chat, and confirm the shortcut never sends a message.
 - [ ] Check Enter, Esc, Backspace, plain Tab, arrow keys, and paste with chat focused. Hold the configured shortcut, try other modifiers, and check that normal gameplay bindings work when chat is closed.
@@ -90,4 +91,4 @@ All items require a running client. Start on an original 3.3.5a client with othe
 - [ ] Register a temporary second mapping using the example above. Check that both appear and selecting either changes conversion.
 - [ ] Verify shortcut and mapping settings survive `/reload` and a full client restart.
 
-Select a software license and complete the client checklist before publishing.
+LayoutFix is published under the [MIT license](LICENSE), added to `main` in `fa9e0a3`.
